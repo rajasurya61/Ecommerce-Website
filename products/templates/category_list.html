@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %} Home Page {% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Category List</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+    
+            th {
+                background-color: #f2f2f2;
+                text-align: left;
+            }
+    
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+    
+            tr:hover {
+                background-color: #ddd;
+            }
+        </style>
+
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'products/styles.css' %}">
+    </head>
+    <body>
+        <h1>Shop by Category</h1>
+        <form method="GET" action="">
+            <input type="text" name="g" placeholder="Search Products" style="background-color: #f2f2f2; 
+            font-size: large; font-weight: 100;">        
+            <button type="submit">Search</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in category %}
+                    <tr>
+                        <td>{{category.id}}</td>
+                        <td>{{ category.name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
+{% endblock %}
